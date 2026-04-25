@@ -2,36 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>跳转调试</title>
-
 </head>
 <body>
     <script>
-        // 明确指定ip仓库的master分支（和你的仓库分支对应）
-        const ipFileUrl = "https://raw.githubusercontent.com/xx201009/ip/master/ip.txt";
-
-        // 读取+调试
-        fetch(ipFileUrl)
-            .then(res => {
-                console.log("请求状态：", res.status); // 打印请求状态（200=成功）
-                return res.text();
-            })
-            .then(url => {
-                console.log("读取到的地址：", url); // 打印读取到的内容
-                const targetUrl = url.trim();
-                if (targetUrl) {
-                    alert("即将跳转到：" + targetUrl); // 弹窗提示地址
-                    window.location.href = targetUrl;
-                } else {
-                    alert("未读取到有效地址");
-                }
-            })
-            .catch(err => {
-                console.error("错误：", err); // 打印错误信息
-                alert("读取失败：" + err.message);
-            });
+        fetch('https://raw.githubusercontent.com/xx201009/ip/master/ip.txt')
+            .then(res => res.text())
+            .then(url => url.trim() && (location.href = url));            .然后(url => url.trim() && (location.href = url));
     </script>
 </body>
 </html>
-
-
