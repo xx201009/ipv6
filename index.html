@@ -1,39 +1,18 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>自动跳转中...</title>
-    <style>
-        body { text-align: center; padding: 50px; font-family: sans-serif; }
-        .loading { color: #666; font-size: 18px; }
-        .error { color: #e53935; margin-top: 20px; }
-    </style>
 </head>
 <body>
-    <p class="loading">⏳ 正在获取地址，即将跳转...</p>
     <script>
-        // 替换为你的实际仓库路径（用户名+仓库名）
-        const githubUser = "xx201009";
-        const repoName = "ip"; // 存放ip.txt的仓库名，根据实际修改
-        const ipFileUrl = `https://raw.githubusercontent.com/${githubUser}/${repoName}/main/ip.txt`;
-        
-        fetch(ipFileUrl)
-            .then(response => {
-                if (!response.ok) throw new Error(`请求失败（状态码：${response.status}）`);
-                return response.text();
-            })
-            .then(targetUrl => {
-                targetUrl = targetUrl.trim();
-                if (targetUrl && (targetUrl.startsWith('http://') || targetUrl.startsWith('https://'))) {
-                    window.location.href = targetUrl;
-                } else {
-                    throw new Error("地址格式错误，未检测到有效链接");
-                }
-            })
-            .catch(error => {
-                document.querySelector('.loading').style.display = 'none';
-                document.body.innerHTML += `<p class="error">❌ 跳转失败：${error.message}</p>`;
+        // 从ip.txt获取地址并跳转
+        fetch('https://raw.githubusercontent.com/xx201009/ip/main/ip.txt')
+            .then(res => res.text())
+            .then(url => {
+                if (url.trim()) window.location.href = url.trim();
             });
     </script>
 </body>
 </html>
+
