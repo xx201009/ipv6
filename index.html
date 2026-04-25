@@ -5,12 +5,12 @@
                 <title>IPv6自动跳转</title>
                     <script>
                                 // 从Gitee获取最新IPv6地址
-                                        fetch('https://gitee.com/icehy/ip/raw/master/ip.txt')
-                                                    .then(response => {
-                                                                    if (!response.ok) throw new Error('获取IP失败');
-               8                                                                     return response.text(); // 读取IP文本（纯IPv6地址，如240e:xxx:xxx::1）
+                                        fetch('https://raw.githubusercontent.com/xx201009/ip/master/ip.txt')
+                                                    .then(response => {                                                    .然后(response响应 => {
+                                                                    if如果 (!response响应.ok) throw new Error('获取IP失败');如果 (!response响应.ok好的) 抛出 新的 错误('获取IP失败');如果 (!response响应.ok) 抛出 new 错误('获取IP失败');如果 (!response响应.ok好的) 抛出 新的 错误('获取IP失败');
+               8                                                                     return response.text(); // 读取IP文本（纯IPv6地址，如240e:xxx:xxx::1）8                                                                     返回 响应.文本(); // 读取IP文本（纯IPv6地址，如240e:xxx:xxx::1）
                                                                                                 })
-                                                                                                            .then(ipv6 => {
+                                                                                                            .then然后然后然后然后然后然后然后然后然后然后(ipv6 => {                                                                                                            .然后(ipv6 => {
                                                                                                                             // 处理IPv6地址（去除空格/换行）
                                                                                                                                             ipv6 = ipv6.trim();
                                                                                                                                                             if (ipv6 === '') throw new Error('IP地址为空');
