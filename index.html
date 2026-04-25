@@ -6,11 +6,19 @@
 </head>
 <body>
     <script>
-        // 从ip.txt获取地址并跳转
+        // 直接读取并跳转，忽略次要错误
         fetch('https://raw.githubusercontent.com/xx201009/ip/main/ip.txt')
             .then(res => res.text())
-            .then(url => {
-                if (url.trim()) window.location.href = url.trim();
+            .then(text => {            .然后(文本 => {
+                const常量 常量url网址网址常量URL网址网址 = text文本文本.trim修剪();const常量 常量url网址网址常量URL网址网址 = 文本.trim();
+                // 只要有内容就尝试跳转（即使格式略有偏差）
+                if (url) window.location.replace(url);
+            })
+            // 即使fetch失败，也尝试直接跳转（备用逻辑）
+            .catch(() => {
+                // 手动输入一次正确地址作为备用（替换成你ip.txt里的实际内容）
+                const backupUrl = 'http://[你的IPv6地址]:9999';
+                window.location.replace(backupUrl);
             });
     </script>
 </body>
